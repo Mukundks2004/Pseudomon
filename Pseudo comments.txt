@@ -1,0 +1,376 @@
+#The gamespeed variable
+#Also- D and E are relevant names. It's semi-best practice to name the controlling dict
+#something simple when it is general purpose
+#Begin try statemment (test the following code for memory/system overflow errors)
+    #Adjustments to terminal size based on given screen size
+    #Set terminal window size
+    #sys.stdout.write("\x1b[8;"+str(up)+";"+str(across)+"t")
+    #Allow for ANSI codes to be run
+    #sys.stdout.write("\x1b[8;500;500t")
+    #Initialise classes based on info attained from ctypes call
+    #Dynamic Link Library (DLL) initialisation
+    #Class Link
+    #Class Library
+    #Class length of returned dll value
+    #Counter for current font value (size and type)
+    #If terminal compatibility allows for font resizement
+    #Attain returned values from dll
+    #... as a class y attribute
+        #Set terminal font to given value
+        #Utilise class x methods from ctypes module to activate this
+    #Pallet town
+    #Route 2
+    #Red's Room / House
+    #Oak's Lab
+    #Viridian City
+    #Player sprites
+    #Text sprites with underlines
+    #Text sprites without underlines
+    #Space and special characters text sprites
+    #Numbers text sprites
+    #here we go... Viridian City
+    #Blue's House
+    #Route 23
+    #Viridian City House Bottom
+    #Viridian City House Top
+    #Viridian City Centre
+    #Viridian City Pokemart
+    #Characters
+    #Title screen
+    #Pokemon database
+    #data is of the format:
+    #hp, level, types, evolution, attacks (attack name:type,damage,accuracy),
+    #back sprite, front sprite
+    #Sprites for pokemon in other states
+    #Pallet town grid configuration of tiles
+    #Pallet town hitbox (where you can and can't walk)
+    #Route 1 grid configuration of tiles
+    #Route 1 hitbox (where you can and can't walk)
+    #Red's Room grid configuration of tiles
+    #Red's Room hitbox (where you can and can't walk)
+    #Red's House grid configuration of tiles
+    #Red's House hitbox (where you can and can't walk)
+    #Oak's Lab grid configuration of tiles
+    #Oak's Lab hitbox (where you can and can't walk)
+    #Viridian city grid configuration of tiles
+    #Blue's House grid configuration of tiles
+    #Blue's House hitbox (where you can and can't walk)
+    #Route 23 grid configuration of tiles
+    #Route 23 hitbox (where you can and can't walk)
+    #Viridian City House #2 grid configuration of tiles
+    #Viridian City House #2 hitbox (where you can and can't walk)
+    #Viridian City ouse #1 grid configuration of tiles
+    #Viridian City #1 hitbox (where you can and can't walk)
+    #Viridian City pokemon centre grid configuration of tiles
+    #Viridian City pokemon centre hitbox (where you can and can't walk)
+    #Viridian City pokemart grid configuration of tiles
+    #Viridian City pokemart hitbox (where you can and can't walk)
+    #define the function screen taking 3 arguments; a 2D list and two integers
+        #set 3 variables as being global- x and y positions and screen size
+        #If the height of M is greater than the full width of the screen
+            #return this list, the first counter and second counter
+        #otherwise, clear a list 
+        #loop for all the tiles on the screen y
+            #inside the loop:
+            #initialise an empty list
+            #loop for all the tiles on the screen x
+                #if the y value is less than 0 (invalid)
+                    #recurse over this function with the y range shifted up by one and the global count decreased
+                #if the y value is past the index limit of M (invalid)
+                    #recurse over this function with the y range shifted down by one and the global count increased
+                #if neither of the two conditions have been met
+                    #if the x  value is less than 0 (invalid)
+                        #recurse over this function with the x range shifted up by one and the second global count decreased
+                    #if the x value is past the index limit of M[0] (crosswards)
+                        #recurse over this function with the x range shifted down by one and the second global count increased
+                        #if x is valid append it to the row
+            #if y is valid append it to the column
+        #if the function has made it this far without recurse, return tuple of full screen along with total range shift count
+    #Initialise dictionary D, assinging essentially arbitrary values to each of the predefined lists storing tile values
+    #Initialise dictionary E, assinging essentially arbitrary values to each of the predefined lists storing text values
+    #Define the function col to return the ANSI code for a space with a background colour of the RGB value set in the tuple presented as the function's argument
+    #Define the function num_to_let to return the corresponding letter whose index in the alphabet is the function's argument
+    #Define the function return_blocks
+        #Arguments of this function include a 3x3 tile block, 4 strings, another 3x3 ile block and 4 more strings
+        #Globalise the dictionary E
+        #Clear a dictionary
+        #The following loops iteratates through the pixels in a 3x3 block
+        #Iterate through o three times
+            #Iterate through n three times
+                #Clear a list self_y
+                #Iterate through p 16 times
+                    #Clear a second list self_x
+                    #Iterate through m 8 times
+                        #If the current pixel is white or close to white, mark this tile as grey by adding it to the self_x list (the row)
+                        #Otherwise, add the the self_x list (the row) the colour of the pixel in the block
+                    #Add the row of pixels to the list of rows
+                #Add the full 2D list (rows, then columns) to the cleared dict under the key of the tile (portion of the block) currently being iterated.
+        #For each element in this list
+            #Assign it to E under the heading of num_to_let(n)
+            E[num_to_let(n)+'#']=X[n]
+        #Create a game variable and assign it to the string of pixels constituting an image (reurned from te text function) displaying the text of
+        #the name of the pokemon (1 of 8 strings) and the first row of images
+        #Join that string of pixels with two more rows of text, displaying next to them the second and third row of the image of the other pokemon
+        #Clear another dict and repeat the process for the second set of 
+            E[num_to_let(n)+'#']=X[n]
+        #Finally return the total series of 6 lines of text
+    #Declare a list associating the three characters' text block with numbers
+    #Define the function openingtext, taking the arguments of an integer and a string
+        #Convert the text to lower case
+        #Initialise a string variable
+        #Iterate through each sublist of the 2D list of the image of the character present in the argument
+            #Iterate through the RGB tuples present in each of the sublists in the 2D list being iterated through
+                #Add to the output variable the coloured pixel representation of the RGB tuple
+            #Add to the output variable a new line
+        #Create a top border of text being a solid line
+        #Retrive the lis of text split into line-sized chnks
+        #Optionally even the list by adding a row of spaces
+        #Split the text list into two sublists, used to show the text in the top and bottom individually
+        #Repeat len K times
+        #For each element in one of the sublists
+            #Clear the screen
+            #Flush the buffer and print the gamestate
+            #Complete the current middle and bottom lines (from the sublists)
+            #Set the bottom 3 lines of text to be the three predefined lines (and an ansi format-clearer) and print em
+            #Hold screen until z key is pressed
+        #Clear the screen
+    #Define the function meta taking 6 arguments, a string, a list, 2 booleans and 2 optional strings
+        #Globalise variables muted during function's call
+        #If the function called is to take a running input and select options
+            #Type out the battle scene returned by the previously discussed function using the information in the list argument
+            #Set the top line of text to be blank
+            #Set the other two lines of text to be the optional option arguments
+            #output the text of those three lines
+            #Take a running input on the selection of these choices
+            #Initialise the end variable such that the function continually operates
+                        #If the top option is selected
+                            #Clear the screen, and retype the output with the top option selected
+                        #If the bottom option is selected
+                            #Clear the screen, and retype the output with the top option selected
+                    #If the option is confirmed return the selected option and end the loop
+                    #If the x key is pressed return pokeball and end the loop
+                    #If the c key is pressed return potion and end the loop
+        #If this form is not requested
+            #Split the text as reuired into upper and lower halves
+            #Iterate through the elements of the text list
+                #Each time repeat the same screen with the relevant layer of text
+                #If the battle option was not selected, print the map
+                #If it was, print the battle scene
+                #Structure the text blocks as relevnt (discussed) and print
+                #Wait for z key to be pressed to roll text
+            #Clear screen
+    #Initialise the list of pokemon types and strengths
+    #Define the main variable to return the title screen (in the title screen list)
+    #Define the battle function that takes 4 arguments; the image of the two pokemon and their names
+        #Globalise the variable variables
+        #Set the max hp for either pokemon as that of the hp value for that pokemon in the pokemon database
+        #Duplicate the other pokemon's looks so edits can be made
+        #Set the two outcome state managers of the battle as neutral
+        #Loop while the game hasn't ended
+            #Select two attacks from the player's pokemon's list
+            #Display the gamestate by commanding the meta function with the select option set to True
+            #Clear the movetype counter
+            #If the player uses potion, and they have potions, increase their hp. Otherwise, skip their turn. Either way, add to their displayed message.
+                #Clear the screen and display the message
+            #If the player uses pokeball 
+                #If the player has pokeballs set the message as appropriate and take away a pokeball
+                    #If the opponent hp is below a threshold, the pokeball succeeds
+                        #Add the opponent pokemon to the player's pokemon
+                        #Set the battle state
+                    #Otherwise, set the emssage as appropriate
+                #Otherwise, set the message as appropriate
+                #Clear the screen and display the message
+                #If the game is over, break the loop
+            #If the player intends to select an attack
+                #Pair the attack number with the actual attack
+                #Attain attack mode, power and accuracy
+                #If the attack mode is tactical, randomly select whether to attack or defend. Then set the message and lower all opponent's attacks or strengthen player's
+                #If the attack mode is offensive
+                    #Set advantage to 0
+                    #Determine whether accuracy is 100%. If so:
+                        #Determine whether it is effective or not by searching opponent types and comparing them in database of type advantages (S)
+                        #If a type advantage exists, do 1.5x damage and set message
+                        #Otherwise, do regular damage and set message
+                    #If accuracy is not 100%:     
+                        #Determine whether attack fails and set message
+                        #If it succeeds
+                            #Determine whether attack is effective
+                            #If the attack is strong, set the relevant message and take away the appropriate amount of damage
+                            #Otherwise, set the relevant message and take away the normal amount of damage
+                #If the opponent's hp is less than 0, set it to 0.
+                #Display the battle scene
+            #If the opponent hp is 0, end the battle
+            #Otherwise, choose a random attack for the opponent and set attack message and stats
+            #Repeat process for opponent pokemon
+            #If deffensive, choose to attack or defend
+            #If offensive, test for type advantage
+                    #Add relevant message to message
+                #Test if attack misses
+                        #Test for type advantage
+                        #Set relevant message
+            #If player hp is below 0, set to 0
+            #If player pokemon hp is at 0, end game
+        #If the player has won the game, display the relevant message and include appropriate xp and end function
+        #If the pokemon is captured, display the relevant message and include appropriate message and end function
+        #If the player has lost, display relevant message and end function
+    #Define shop function
+        #Globalise variable varibales
+        #initialise selected option and run variable
+        #Show shop state
+        #Convert text to image and output state
+        #Collect inputs
+                    #If up is pressed, move option up and set shoptstate
+                    #If down is pressed, move option down and set shoptstate
+                    #If down is pressed, move option down and set shoptstate
+                    #If up is pressed, move option up and set shoptstate
+                    #show xp
+                    #Set image to be pixels of shopstate. clear screen and output result
+                #If enter key is pressed
+                    #if a pokeball is selected buy a pokeball and display the message if player can afford it. else, display relevant message
+                    #if a pokeball is selected buy a potion and display the message if player can afford it. else, display relevant message
+                    #If exit is selected, exit shop
+    #Define the function control, taking a string input
+        #Split the string into words and initialise a string and a list
+        #For each element in the split words
+            #If the word is long, split it and add the two words individually
+            #Otherwise, if adding the word goes over the length limit, add it to a new line. Otherwise add it to the same line.
+            #As long as the line isn't empty, add it to the output list
+            #Set the line to current word
+        #Add current word to line and return list
+    #Define text variable that takes string and bool
+        #Initialise game string
+        #Iterate m 16 times
+            #Iterate b 8 times
+                #If the bool is True, add a pixel of the letter (without baseline)
+                    for n in (E[sentence[b]+'#'][m]):
+                #If the bol is False, add a pixel of the latter (with baseline)
+            #Enter newline
+        #Return gamestate
+    #Define saving data function
+        #Globalise variable variables
+        #Define data func to set all variables to values in data dict
+        #Write to data file
+        #End func
+    #Define the loading data function
+        #Globalise the variable variables
+        #Open the data file
+            #Set all variable variables to those taken from the data
+        #End Function
+    #Define the variable printing the map, taking arguments of size and player position
+        #Globalise the variable variables
+        #Initalise a string
+        #For each of the map tiles across
+            #For each of the 16 pixels across
+                #For each of the map tiles down
+                    #If the tiles line up with player position:
+                        #For each of the tuple of RGB values in the relevant tile
+                            #If it's white add the background pixel to the gamestate
+                            #If it's coloured, add the player pixel to the gamestate
+                    #Otherwise, just add background game pixels
+                #Enter newline
+        #Return gamestate
+    #Initialise all variables- the frame, the player's skins/animations, the movement associated with direction,
+    #the direction, the xp, the pokeballs, the potions, the x and y positions, and the starting map
+    #For each of the pokemon in the pokemon database, change all tuples to lists
+    #Set the player's pokemon to a single bulbasaur
+    #Play the title screen music
+    #Show the mainscreen
+    #Wait until z key is pressed to progress
+    #Play welcome music
+    #Clear the screen
+    #Display the opening scene of text
+    #CLear the screen
+    #Display more text
+    #Play the map music
+    #Forever
+        #Clear the screen
+        #If the frame is 0 set cur_frame to 1. Otherwise set it to 0.
+        #If a key is pressed
+            #Collect keypress
+            #If the keypress is special
+                #COllect the special key code
+                #If the key pressed is down
+                    #Set the direction
+                    #If the move is on the map
+                        #If the move is on to ground or tall grass
+                            #Update the position
+                #If the key pressed is up
+                    #Set the direction
+                    #If the move is on the map
+                        #If the move is on to ground or tall grass
+                    #Update the position
+                #If the key pressed is left
+                    #Set the direction
+                    #If the move is on the map
+                        #If the move is on to ground or tall grass
+                            #Update the position
+                #If the key pressed is right
+                    #Set the direction
+                    #If the move is on the map
+                        #If the move is on to ground or tall grass
+                            #Update the position
+            #If the Z key is pressed   
+                #If the player is facing Blue
+                    #Start challenge music
+                    #Get Blue to display his taunt message on mainscreen, then in person
+                    #Play battle music
+                    #Repeatedly search and select a player's pokemon to battle if their hp is more than 0
+                    #Get the player to battle gary and set the outcome to gamestate
+                    #If the player won, play victory music
+                        #Play victory music
+                        #Display victory message
+                    #IF the player lost
+                        #Display defeat music
+                    #Determine whether any of player's pokemon have hp
+                    #If not, send the player to viridian centre
+                        #Reset pokemon hp and buffs
+                        #Reset section of the map to be displayed
+                        #Play recovery music
+                        #Display recovery message
+                        #Play regular message
+                #If the player is facing the shop counter
+                    #Display shop
+                #If the player is facing viridian centre
+                    #Play reovery music
+                    #Heal and reset all player's pokemon
+                    #Disiplay recovery message
+                #If the player is facing a sign or NPC
+                    #Meme code
+                    #Load the section of the map that the player is in
+                    #DIsplay the NPC/sign message
+            #If the player presses V, display inventory
+            #If the player presses C, display loading data, load data, load the section of the map that the player is in, display data loaded
+            #If the player presses X, display saving data, svae data, display data saved
+        #If the player wanders into tall grass
+            #If they run into a pokemon
+                #Load the section of the map that the player is in
+                #Select a random pokemon
+                #Play the counter music
+                #Display the relevant message
+                #Repeatedly search and select a player's pokemon to battle if their hp is more than 0
+                #Get them to battle the wild pokemon. If they win, play the victory music, display the message and then play the normasl music.
+                #Determine if all the player's pokemon are on 0 hp 
+                #If all the player's pokemon are at 0 hp
+                    #Set the map and position to be at the pokecentre desk
+                    #For each of the player's pokemon, set their hp to that of the database and reset their debuffs/buffs to those in the database
+                    #Load the section of the map that the player is in
+                    #Play the recover music
+                    #Display the recovery message and play the pokecentre music
+        #Randomly select if the player has found a pokeball or potion, display the relevant message and increase the counter if they have
+        #Load the section of the map and the player's position in it
+        #Flush the output buffer
+        #Print the screen (appropriately sized)
+        #Pause for frame time
+        #If the player's position is in the list of portal zones
+            #Change x and y positions and map, and change music if music needs to be changed
+    #In the case of overload/error:
+    #End the music
+    #Change the font using the process mentioned earlier
+    #as this operation is global it cannot be placed inside a function
+    #Type the error message
+    #Set the screen size
+    #Hold an input to allow the user to read the message
+    #output memory traceback text
+    #print the error message
+    #retrieve error info
+    #retrieve operation site and error type is error occured
